@@ -16,9 +16,13 @@ search_keywords:
 # gb, us, at, au, br, ca, de, fr, in, it, nl, nz, pl, sg, za, mx, ae, sa
 # "ae" (UAE) is used here as the closest regional/remote-friendly option —
 # many remote and hybrid roles for Pakistan-based candidates get posted there.
-adzuna_country: "ae"
+adzuna_country: 
+ - "gb"
+ - "us"
+ - "in"
+ - "sg"
+ - "ca"
 locations:
-  - "Dubai"
   - "Remote"
 
 # Skill keywords used to SCORE and rank matched jobs (higher score = better fit)

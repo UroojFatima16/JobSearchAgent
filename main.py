@@ -66,31 +66,32 @@ def fetch_adzuna_jobs(config):
         return []
 
     jobs = []
-    country = config.get("adzuna_country", "pk")
-    for keyword in config["search_keywords"]:
-        url = f"https://api.adzuna.com/v1/api/jobs/{country}/search/1"
-        params = {
-            "app_id": app_id,
-            "app_key": app_key,
-            "results_per_page": config.get("max_results_per_source", 30),
-            "what": keyword,
-            "content-type": "application/json",
-        }
-        try:
-            resp = requests.get(url, params=params, timeout=20)
-            resp.raise_for_status()
-            data = resp.json()
-            for item in data.get("results", []):
-                jobs.append({
-                    "id": f"adzuna-{item.get('id')}",
-                    "title": item.get("title", ""),
-                    "company": item.get("company", {}).get("display_name", "Unknown"),
-                    "location": item.get("location", {}).get("display_name", ""),
-                    "url": item.get("redirect_url", ""),
-                    "description": item.get("description", ""),
-                })
-        except requests.RequestException as e:
-            print(f"Adzuna fetch failed for '{keyword}': {e}")
+    countries = config.get("adzuna_countries", ["gb"])
+    for country in countries:
+        for keyword in config["search_keywords"]:
+            url = f"https://api.adzuna.com/v1/api/jobs/{country}/search/1"
+            params = {
+                "app_id": app_id,
+                "app_key": app_key,
+                "results_per_page": config.get("max_results_per_source", 30),
+                "what": keyword,
+                "content-type": "application/json",
+            }
+            try:
+                resp = requests.get(url, params=params, timeout=20)
+                resp.raise_for_status()
+                data = resp.json()
+                for item in data.get("results", []):
+                    jobs.append({
+                        "id": f"adzuna-{country}-{item.get('id')}",
+                        "title": item.get("title", ""),
+                        "company": item.get("company", {}).get("display_name", "Unknown"),
+                        "location": item.get("location", {}).get("display_name", ""),
+                        "url": item.get("redirect_url", ""),
+                        "description": item.get("description", ""),
+                    })
+            except requests.RequestException as e:
+                print(f"Adzuna fetch failed for '{keyword}' in '{country}': {e}")
     return jobs
 
 
