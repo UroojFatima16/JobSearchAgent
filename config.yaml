@@ -9,12 +9,16 @@ search_keywords:
   - "Data Scientist"
   - "ML Engineer"
   - "Data Analyst"
+  - "AI Engineer"
 
 # Locations to search on Adzuna (country code + city name)
-# Adzuna country codes: pk (Pakistan), gb, us, ae, etc.
-adzuna_country: "pk"
+# NOTE: Adzuna does NOT support Pakistan ("pk"). Supported countries include:
+# gb, us, at, au, br, ca, de, fr, in, it, nl, nz, pl, sg, za, mx, ae, sa
+# "ae" (UAE) is used here as the closest regional/remote-friendly option —
+# many remote and hybrid roles for Pakistan-based candidates get posted there.
+adzuna_country: "ae"
 locations:
-  - "Karachi"
+  - "Dubai"
   - "Remote"
 
 # Skill keywords used to SCORE and rank matched jobs (higher score = better fit)
@@ -54,9 +58,9 @@ greenhouse_companies:
   - "coinbase"
 
 # Companies to check directly via their public Lever job boards
-# e.g. https://jobs.lever.co/netflix -> slug is "netflix"
-lever_companies:
-  - "netflix"
+# e.g. https://jobs.lever.co/COMPANYNAME -> slug is "COMPANYNAME"
+# (left empty for now — add real slugs once you find companies using Lever)
+lever_companies: []
 
 # Include remote-friendly listings from RemoteOK (public API, no key needed)
 use_remoteok: true
