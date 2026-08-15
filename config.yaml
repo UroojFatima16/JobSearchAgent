@@ -1,0 +1,65 @@
+# ============================================================
+# Job Search Agent - Configuration
+# Edit this file to control what the agent searches for.
+# ============================================================
+
+# Job titles / keywords to search for (used across all sources)
+search_keywords:
+  - "Data Engineer"
+  - "Data Scientist"
+  - "ML Engineer"
+  - "Data Analyst"
+
+# Locations to search on Adzuna (country code + city name)
+# Adzuna country codes: pk (Pakistan), gb, us, ae, etc.
+adzuna_country: "pk"
+locations:
+  - "Karachi"
+  - "Remote"
+
+# Skill keywords used to SCORE and rank matched jobs (higher score = better fit)
+# Based on Urooj's stack: Python, PySpark, SQL, ML, Data Engineering
+skill_keywords:
+  - python
+  - sql
+  - pyspark
+  - spark
+  - databricks
+  - delta lake
+  - mlflow
+  - scikit-learn
+  - tensorflow
+  - machine learning
+  - data engineering
+  - data pipeline
+  - etl
+  - airflow
+  - azure
+  - aws
+  - gcp
+  - kafka
+  - streamlit
+  - hopsworks
+
+# Minimum keyword-match score required to include a job in the email digest
+# (out of len(skill_keywords) matched — tune this after your first run)
+min_score: 2
+
+# Companies to check directly via their public Greenhouse job boards
+# Find a company's board slug from its careers URL, e.g.
+# https://job-boards.greenhouse.io/stripe -> slug is "stripe"
+greenhouse_companies:
+  - "stripe"
+  - "airbnb"
+  - "coinbase"
+
+# Companies to check directly via their public Lever job boards
+# e.g. https://jobs.lever.co/netflix -> slug is "netflix"
+lever_companies:
+  - "netflix"
+
+# Include remote-friendly listings from RemoteOK (public API, no key needed)
+use_remoteok: true
+
+# Max results to pull per source per run (keeps runs fast and free-tier friendly)
+max_results_per_source: 30
