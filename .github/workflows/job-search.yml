@@ -28,8 +28,8 @@ jobs:
         env:
           ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
           ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
-          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
-          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          EMAIL_ADDRESS: ${{ secrets.EMAIL }}
+          EMAIL_APP_PASSWORD: ${{ secrets.PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
         run: python main.py
 
